@@ -1,7 +1,7 @@
-
+import Footer from "./components/footer/Footer"
 function App() {
   return (
-      <h1>Hola</h1>
+      <Footer/>
   );
 }
 
