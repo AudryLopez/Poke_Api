@@ -12,7 +12,7 @@ const componentsStyle = {
 	title: {
 		fontSize: "4.2rem",
 		fontWeight: "600",
-		color: "black",
+		color: "#d32f2f",
 		display: "inline-block",
 		position: "relative",
 		fontFamily: "nunito",
@@ -22,7 +22,7 @@ const componentsStyle = {
 		fontSize: "1.5rem",
 		maxWidth: "500px",
 		margin: "10px 0 0",
-		color: "black",
+		color: "#d32f2f",
 		fontFamily: "nunito",
 	},
 	main: {

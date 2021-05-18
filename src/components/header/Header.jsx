@@ -3,6 +3,7 @@ import React from "react";
 import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+import logo from "../../assets/img/Logo.svg";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -60,7 +61,11 @@ export default function Header(props) {
 		[classes.absolute]: absolute,
 		[classes.fixed]: fixed,
 	});
-	const brandComponent = <Button imagen={require("../../assets/img/pk-2.jpg")} className={classes.title}>{brand}</Button>;
+	const brandComponent = (
+		<Button>
+			<img className={classes.img} src={logo} alt="Pokemon logo" />
+		</Button>
+	);
 	return (
 		<AppBar className={appBarClasses}>
 			<Toolbar className={classes.container}>
