@@ -6,6 +6,8 @@ import classNames from "classnames";
 // material-ui core components
 import { List, ListItem, makeStyles } from "@material-ui/core";
 
+
+
 import styles from "./footerStyle";
 
 const useStyles = makeStyles(styles);
@@ -30,7 +32,8 @@ export default function Footer(props) {
 							<a
 								href="https://www.creative-tim.com/?ref=mkr-footer"
 								className={classes.block}
-								target="_blank" rel="noreferrer">
+								target="_blank"
+								rel="noreferrer">
 								Creative Tim
 							</a>
 						</ListItem>
@@ -38,7 +41,8 @@ export default function Footer(props) {
 							<a
 								href="https://www.creative-tim.com/presentation?ref=mkr-footer"
 								className={classes.block}
-								target="_blank" rel="noreferrer">
+								target="_blank"
+								rel="noreferrer">
 								About us
 							</a>
 						</ListItem>
@@ -46,7 +50,8 @@ export default function Footer(props) {
 							<a
 								href="http://blog.creative-tim.com/?ref=mkr-footer"
 								className={classes.block}
-								target="_blank" rel="noreferrer">
+								target="_blank"
+								rel="noreferrer">
 								Blog
 							</a>
 						</ListItem>
@@ -54,7 +59,8 @@ export default function Footer(props) {
 							<a
 								href="https://www.creative-tim.com/license?ref=mkr-footer"
 								className={classes.block}
-								target="_blank" rel="noreferrer">
+								target="_blank"
+								rel="noreferrer">
 								Licenses
 							</a>
 						</ListItem>
@@ -65,8 +71,9 @@ export default function Footer(props) {
 					<a
 						href="https://github.com/AudryLopez"
 						className={aClasses}
-						target="_blank" rel="noreferrer">
-						Audry López
+						target="_blank"
+						rel="noreferrer">
+						Audry Lopez
 					</a>{" "}
 					Web designer
 				</div>

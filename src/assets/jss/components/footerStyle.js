@@ -1,5 +1,4 @@
-import { container, primaryColor } from "../../assets/jss/material-kit-react";
-import "@fontsource/nunito";
+import { container, primaryColor } from "assets/jss/material-kit-react.js";
 
 const footerStyle = {
   block: {
@@ -11,8 +10,7 @@ const footerStyle = {
     borderRadius: "3px",
     textDecoration: "none",
     position: "relative",
-    display: "block",
-    fontFamily: "nunito",
+    display: "block"
   },
   left: {
     float: "left!important",
