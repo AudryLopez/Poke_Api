@@ -4,16 +4,16 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import Header from "../header/Header.jsx";
+import Header from "../Header/header.js";
+import Pokemon from "components/Pokemon/Pokemon"
 import Footer from "../footer/Footer";
 import GridContainer from "../Grid/GridContainer.js";
 import GridItem from "../Grid/GridItem.js";
 import Parallax from "../Grid/Parallax.js";
 // sections for this page
-import HeaderLinks from "../header/header";
-
-
+import HeaderLinks from "../Header/header";
 import styles from "./components";
+import info from "components/Card/info";
 
 const useStyles = makeStyles(styles);
 
@@ -44,6 +44,7 @@ export default function Components(props) {
 					</GridContainer>
 				</div>
 			</Parallax>
+			<Pokemon/>
 			<Footer />
 		</div>
 	);
