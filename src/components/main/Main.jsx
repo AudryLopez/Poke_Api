@@ -6,14 +6,13 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Header from "../Header/header.js";
 import Pokemon from "components/Pokemon/Pokemon"
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import GridContainer from "../Grid/GridContainer.js";
 import GridItem from "../Grid/GridItem.js";
 import Parallax from "../Grid/Parallax.js";
 // sections for this page
 import HeaderLinks from "../Header/header";
 import styles from "./components";
-import info from "components/Card/info";
 
 const useStyles = makeStyles(styles);
 
