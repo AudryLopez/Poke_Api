@@ -8,11 +8,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
+import logo from "assets/img/Logo.svg";
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 
@@ -53,58 +53,59 @@ export default function Header(props) {
         .classList.remove(classes[changeColorOnScroll.color]);
     }
   };
-  const { color, rightLinks, leftLinks, brand, fixed, absolute } = props;
+  const { color, rightLinks, leftLinks, fixed, absolute } = props;
   const appBarClasses = classNames({
     [classes.appBar]: true,
     [classes[color]]: color,
     [classes.absolute]: absolute,
     [classes.fixed]: fixed,
   });
-  const brandComponent = <Button className={classes.title}>{brand}</Button>;
+
+  
   return (
-    <AppBar className={appBarClasses}>
-      <Toolbar className={classes.container}>
-        {leftLinks !== undefined ? brandComponent : null}
-        <div className={classes.flex}>
-          {leftLinks !== undefined ? (
-            <Hidden smDown implementation="css">
-              {leftLinks}
-            </Hidden>
-          ) : (
-            brandComponent
-          )}
-        </div>
-        <Hidden smDown implementation="css">
-          {rightLinks}
-        </Hidden>
-        <Hidden mdUp>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-          >
-            <Menu />
-          </IconButton>
-        </Hidden>
-      </Toolbar>
-      <Hidden mdUp implementation="js">
-        <Drawer
-          variant="temporary"
-          anchor={"right"}
-          open={mobileOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          onClose={handleDrawerToggle}
-        >
-          <div className={classes.appResponsive}>
-            {leftLinks}
-            {rightLinks}
-          </div>
-        </Drawer>
-      </Hidden>
-    </AppBar>
-  );
+		<AppBar className={appBarClasses}>
+			<Toolbar className={classes.container}>
+				{leftLinks !== undefined ? (
+					<img className={classes.title} src={logo} alt="Pokemon logo"></img>
+				) : null}
+				<div className={classes.flex}>
+					{leftLinks !== undefined ? (
+						<Hidden smDown implementation="css">
+							{leftLinks}
+						</Hidden>
+					) : (
+						<img className={classes.img} src={logo} alt="Pokemon logo"></img>
+					)}
+				</div>
+				<Hidden smDown implementation="css">
+					{rightLinks}
+				</Hidden>
+				<Hidden mdUp>
+					<IconButton
+						color="inherit"
+						aria-label="open drawer"
+						onClick={handleDrawerToggle}>
+						<Menu />
+					</IconButton>
+				</Hidden>
+			</Toolbar>
+			<Hidden mdUp implementation="js">
+				<Drawer
+					variant="temporary"
+					anchor={"right"}
+					open={mobileOpen}
+					classes={{
+						paper: classes.drawerPaper,
+					}}
+					onClose={handleDrawerToggle}>
+					<div className={classes.appResponsive}>
+						{leftLinks}
+						{rightLinks}
+					</div>
+				</Drawer>
+			</Hidden>
+		</AppBar>
+	);
 }
 
 Header.defaultProp = {

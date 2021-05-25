@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -54,7 +53,7 @@ export default function SectionDownload() {
               We{"'"}ve launched{" "}
               <a
                 href="https://www.creative-tim.com/product/material-kit-pro-react?ref=mkr-download-section"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Material Kit PRO React{" "}
               </a>

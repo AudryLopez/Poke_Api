@@ -31,6 +31,9 @@ const headerStyle = {
     position: "relative",
     zIndex: "unset",
   },
+  img:{
+    maxHeight:"30px"
+  },
   absolute: {
     position: "absolute",
     zIndex: "1100",
