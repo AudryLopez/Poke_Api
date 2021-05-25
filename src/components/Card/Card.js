@@ -1,49 +1,36 @@
-import React, { useEffect, useState } from "react";
-import imgs from "../../assets/img/types/Fuego_Pokemon.svg";
-import {
-	Grid,
-	Card,
-	Typography,
-	CardHeader,
-	CardContent,
-	CardMedia,
-	CardActions,
-	IconButton,
-} from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
-import Style from "../../assets/jss/components/cardStyle";
+import React from "react";
+// nodejs library that concatenates classes
+import classNames from "classnames";
+// nodejs library to set properties for components
+import PropTypes from "prop-types";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+// @material-ui/icons
 
-function Cards() {
-	const classes = Style();
+// core components
+import styles from "assets/jss/material-kit-react/components/cardStyle.js";
 
-		return (
-			<Grid item xs={4}>
-				<Card className={classes.root} variant="outlined">
-					<CardHeader title={pokemon.name} />
-					<CardMedia
-						className={classes.media}
-						image={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.entry_number}.png`}
-					/>
-					<CardContent>
-						<Typography
-							variant="body2"
-							color="textSecondary"
-							component="p">
-							Hola!
-						</Typography>
-					</CardContent>
-					<CardActions disableSpacing>
-						<img
-							className={classes.imgen}
-							src={imgs}
-							alt="Pokemon logo"
-						/>
-						<IconButton aria-label="share">
-							<ShareIcon />
-						</IconButton>
-					</CardActions>
-				</Card>
-			</Grid>
-    )
-    }
-export default Cards;
+const useStyles = makeStyles(styles);
+
+export default function Card(props) {
+  const classes = useStyles();
+  const { className, children, plain, carousel, ...rest } = props;
+  const cardClasses = classNames({
+    [classes.card]: true,
+    [classes.cardPlain]: plain,
+    [classes.cardCarousel]: carousel,
+    [className]: className !== undefined,
+  });
+  return (
+    <div className={cardClasses} {...rest}>
+      {children}
+    </div>
+  );
+}
+
+Card.propTypes = {
+  className: PropTypes.string,
+  plain: PropTypes.bool,
+  carousel: PropTypes.bool,
+  children: PropTypes.node,
+};

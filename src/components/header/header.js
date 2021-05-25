@@ -1,100 +1,151 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+// nodejs library that concatenates classes
+import classNames from "classnames";
+// nodejs library to set properties for components
+import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
-
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
+import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
-import { Apps } from "@material-ui/icons";
-
+import Menu from "@material-ui/icons/Menu";
 // core components
-import CustomDropdown from "../CustomDropdown/CustomDropdown";
-import Button from "../CustomButtons/Button";
-
-import styles from "../../assets/jss/components/headerLinksStyle";
+import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
-	const classes = useStyles();
-	return (
-		<List className={classes.list}>
-			<ListItem className={classes.listItem}>
-				<CustomDropdown
-					noLiPadding
-					buttonText="Components"
-					buttonProps={{
-						className: classes.navLink,
-						color: "transparent",
-					}}
-					buttonIcon={Apps}
-					dropdownList={[
-						<Link to="/" className={classes.dropdownLink}>
-							All components
-						</Link>,
-						<a
-							href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
-							target="_blank"
-							className={classes.dropdownLink}
-							rel="noreferrer">
-							Documentation
-						</a>,
-					]}
-				/>
-			</ListItem>
-			<ListItem className={classes.listItem}>
-				{/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
+export default function Header(props) {
+  const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  React.useEffect(() => {
+    if (props.changeColorOnScroll) {
+      window.addEventListener("scroll", headerColorChange);
+    }
+    return function cleanup() {
+      if (props.changeColorOnScroll) {
+        window.removeEventListener("scroll", headerColorChange);
+      }
+    };
+  });
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+  const headerColorChange = () => {
+    const { color, changeColorOnScroll } = props;
+    const windowsScrollTop = window.pageYOffset;
+    if (windowsScrollTop > changeColorOnScroll.height) {
+      document.body
+        .getElementsByTagName("header")[0]
+        .classList.remove(classes[color]);
+      document.body
+        .getElementsByTagName("header")[0]
+        .classList.add(classes[changeColorOnScroll.color]);
+    } else {
+      document.body
+        .getElementsByTagName("header")[0]
+        .classList.add(classes[color]);
+      document.body
+        .getElementsByTagName("header")[0]
+        .classList.remove(classes[changeColorOnScroll.color]);
+    }
+  };
+  const { color, rightLinks, leftLinks, brand, fixed, absolute } = props;
+  const appBarClasses = classNames({
+    [classes.appBar]: true,
+    [classes[color]]: color,
+    [classes.absolute]: absolute,
+    [classes.fixed]: fixed,
+  });
+  const brandComponent = <Button className={classes.title}>{brand}</Button>;
+  return (
+    <AppBar className={appBarClasses}>
+      <Toolbar className={classes.container}>
+        {leftLinks !== undefined ? brandComponent : null}
+        <div className={classes.flex}>
+          {leftLinks !== undefined ? (
+            <Hidden smDown implementation="css">
+              {leftLinks}
+            </Hidden>
+          ) : (
+            brandComponent
+          )}
+        </div>
+        <Hidden smDown implementation="css">
+          {rightLinks}
+        </Hidden>
+        <Hidden mdUp>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerToggle}
+          >
+            <Menu />
           </IconButton>
-        </Tooltip>*/}
-				<Tooltip
-					id="instagram-twitter"
-					title="Siguenos en Telegram"
-					placement={window.innerWidth > 959 ? "top" : "left"}
-					classes={{ tooltip: classes.tooltip }}>
-					<Button
-						href="https://twitter.com/CreativeTim?ref=creativetim"
-						target="_blank"
-						color="transparent"
-						className={classes.navLink}>
-						<i className={classes.socialIcons + " fab fa-telegram"} />
-					</Button>
-				</Tooltip>
-			</ListItem>
-			<ListItem className={classes.listItem}>
-				<Tooltip
-					id="instagram-facebook"
-					title="Follow us on facebook"
-					placement={window.innerWidth > 959 ? "top" : "left"}
-					classes={{ tooltip: classes.tooltip }}>
-					<Button
-						color="transparent"
-						href="https://www.facebook.com/CreativeTim?ref=creativetim"
-						target="_blank"
-						className={classes.navLink}>
-						<i className={classes.socialIcons + " fab fa-facebook"} />
-					</Button>
-				</Tooltip>
-			</ListItem>
-			<ListItem className={classes.listItem}>
-				<Tooltip
-					id="instagram-tooltip"
-					title="Follow us on instagram"
-					placement={window.innerWidth > 959 ? "top" : "left"}
-					classes={{ tooltip: classes.tooltip }}>
-					<Button
-						color="transparent"
-						href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-						target="_blank"
-						className={classes.navLink}>
-						<i className={classes.socialIcons + " fab fa-instagram"} />
-					</Button>
-				</Tooltip>
-			</ListItem>
-		</List>
-	);
+        </Hidden>
+      </Toolbar>
+      <Hidden mdUp implementation="js">
+        <Drawer
+          variant="temporary"
+          anchor={"right"}
+          open={mobileOpen}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          onClose={handleDrawerToggle}
+        >
+          <div className={classes.appResponsive}>
+            {leftLinks}
+            {rightLinks}
+          </div>
+        </Drawer>
+      </Hidden>
+    </AppBar>
+  );
 }
+
+Header.defaultProp = {
+  color: "white",
+};
+
+Header.propTypes = {
+  color: PropTypes.oneOf([
+    "primary",
+    "info",
+    "success",
+    "warning",
+    "danger",
+    "transparent",
+    "white",
+    "rose",
+    "dark",
+  ]),
+  rightLinks: PropTypes.node,
+  leftLinks: PropTypes.node,
+  brand: PropTypes.string,
+  fixed: PropTypes.bool,
+  absolute: PropTypes.bool,
+  // this will cause the sidebar to change the color from
+  // props.color (see above) to changeColorOnScroll.color
+  // when the window.pageYOffset is heigher or equal to
+  // changeColorOnScroll.height and then when it is smaller than
+  // changeColorOnScroll.height change it back to
+  // props.color (see above)
+  changeColorOnScroll: PropTypes.shape({
+    height: PropTypes.number.isRequired,
+    color: PropTypes.oneOf([
+      "primary",
+      "info",
+      "success",
+      "warning",
+      "danger",
+      "transparent",
+      "white",
+      "rose",
+      "dark",
+    ]).isRequired,
+  }),
+};
