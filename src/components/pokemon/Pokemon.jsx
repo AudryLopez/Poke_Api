@@ -2,26 +2,26 @@ import React, { useEffect, useState } from "react";
 import {
 	Grid
 } from "@material-ui/core";
-import Style from "./pokemonStyle";
 
 function Pokemon() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
+	const getdata = async (url)=>{
+		const data = await fetch(`${url}`)
+		const response = await data.json()
+		setItems(response)
+		setIsLoaded(true);
+	}
 
 	useEffect(() => {
-		fetch("https://pokeapi.co/api/v2/pokemon?limit=15")
-			.then((res) => res.json())
-			.then(
-				(result) => {
-					setIsLoaded(true);
-					setItems(result);
-				},
-				(error) => {
-					setIsLoaded(true);
-					setError(error);
-				}
-			);
+		getdata("https://pokeapi.co/api/v2/pokemon?limit=15")
+		.then(
+			(error) => {
+				setIsLoaded(true);
+				setError(error);
+			}
+		);
 	}, []);
 
 	if (error) {
@@ -33,7 +33,9 @@ function Pokemon() {
 			<Grid item container justify="space-around">
 				<Grid item container xs={12} sm={8}>
 					<Grid container spacing={2}>
-						<h1></h1>
+						{items.map((pokemon)=>(
+							<h1 key={pokemon.id}>{pokemon.name}</h1>
+						))}
 					</Grid>
 				</Grid>
 			</Grid>
