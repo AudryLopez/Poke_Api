@@ -7,21 +7,20 @@ function Pokemon() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
+	const { REACT_APP_POKEAPI } = process.env
+
 	const getdata = async (url)=>{
-		const data = await fetch(`${url}`)
+		const data = await fetch(url)
 		const response = await data.json()
-		setItems(response)
+		setItems(response.results)
 		setIsLoaded(true);
 	}
 
 	useEffect(() => {
-		getdata("https://pokeapi.co/api/v2/pokemon?limit=15")
-		.then(
-			(error) => {
-				setIsLoaded(true);
-				setError(error);
-			}
-		);
+		getdata(`${REACT_APP_POKEAPI}?limit=15`).then((error) => {
+			setIsLoaded(true);
+			setError(error);
+		});
 	}, []);
 
 	if (error) {
@@ -33,9 +32,10 @@ function Pokemon() {
 			<Grid item container justify="space-around">
 				<Grid item container xs={12} sm={8}>
 					<Grid container spacing={2}>
-						{items.map((pokemon)=>(
-							<h1 key={pokemon.id}>{pokemon.name}</h1>
-						))}
+						{items.map((pokemon, id)=>{
+							console.log(id)
+							return (<h1 key={id}>{pokemon.name}</h1>) 
+							})}
 					</Grid>
 				</Grid>
 			</Grid>
