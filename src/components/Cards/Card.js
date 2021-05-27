@@ -1,43 +1,37 @@
-import React from "react";
-import imgs from "../../assets/img/types/Fuego_Pokemon.svg";
-import {
-	Grid,
-	Card,
-	Typography,
-	CardHeader,
-	CardContent,
-	CardMedia,
-	CardActions,
-	IconButton,
-} from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
-import Style from "../../assets/jss/components/cardStyle";
+import React, { useState, useEffect } from "react";
+import Card from "components/Cards/cards";
 
-function Cards(pokemon) {
-	const classes = Style();
-	const { REACT_APP_APIMG } = process.env
+function Cards() {
+	const url = "https://pokeapi.co/api/v2/pokemon/2/";
+	const [items, setItems] = useState()
+	const [isLoaded, setIsLoaded] = useState(false);
 
+	const getdata = async url => {
+		const data = await fetch(url);
+		return await [data.json()];
+	};
+
+	useEffect(async() => {
+		
+		const response = await getdata(url);
+		
+		const pokemons = response.map((result) => ({
+			name: result.name,
+			Img: result.sprites.other.dream_world.front_defaul,
+		}));
+		console.log(pokemons)
+		setIsLoaded(true);
+		setItems(pokemons);
+		
+	}, []);
+
+	if (!isLoaded) {
+		return <div>Loading...</div>;
+	} else {
 		return (
-			<Grid item xs={4}>
-				<Card className={classes.root} variant="outlined">
-					<CardHeader title={pokemon.name} />
-					<CardMedia
-						className={classes.media}
-						image={`${REACT_APP_APIMG}${pokemon.entry_number}.png`}
-					/>
-					<CardContent>
-						<Typography variant="body2" color="textSecondary" component="p">
-							Hola!
-						</Typography>
-					</CardContent>
-					<CardActions disableSpacing>
-						<img className={classes.imgen} src={imgs} alt="Pokemon logo" />
-						<IconButton aria-label="share">
-							<ShareIcon />
-						</IconButton>
-					</CardActions>
-				</Card>
-			</Grid>
-		);
-    }
+		items.map((pokemon, id)=>{
+			return <Card key={id} pokemon={pokemon}/>
+	}))
+}
+}
 export default Cards;

@@ -33,7 +33,7 @@ function Pokemon() {
 				<Grid item container xs={12} sm={8}>
 					<Grid container spacing={2}>
 						{items.map((pokemon, id)=>{
-							console.log(id)
+							console.log(pokemon);
 							return (<h1 key={id}>{pokemon.name}</h1>) 
 							})}
 					</Grid>
