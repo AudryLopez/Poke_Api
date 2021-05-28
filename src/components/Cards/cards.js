@@ -1,5 +1,5 @@
 import React from "react";
-import imgs from "../../assets/img/types/Fuego_Pokemon.svg";
+import imgs from "../../assets/img/types/Planta_Pokemon.svg";
 import {
 	Grid,
 	Card,
