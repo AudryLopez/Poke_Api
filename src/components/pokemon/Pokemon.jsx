@@ -18,7 +18,7 @@ function Pokemon() {
 	}
 
 	useEffect(() => {
-		getdata(`${REACT_APP_POKEAPI}?limit=15`).then((error) => {
+		getdata(`${REACT_APP_POKEAPI}?limit=16`).then((error) => {
 			setIsLoaded(true);
 			setError(error);
 		});
@@ -31,7 +31,7 @@ function Pokemon() {
 	} else {
 		return (
 			<Grid item container justify="space-around">
-				<Grid item container xs={12} sm={6}>
+				<Grid item container xs={12} sm={8}>
 					<Grid container spacing={2}>
 						{items.map((pokemon, id)=>{
 							return(<Cards key={id} url={pokemon.url}/>)
