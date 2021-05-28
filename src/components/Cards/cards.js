@@ -15,15 +15,13 @@ import Style from "assets/jss/material-kit-react/components/cardsStyle";
 
 function cards(pokemon) {
 	const classes = Style();
+	const { name, Img } = pokemon;
 
 		return (
 			<Grid item xs={4}>
 				<Card className={classes.root} variant="outlined">
-					<CardHeader title={pokemon.name} />
-					<CardMedia
-						className={classes.media}
-						image={pokemon.Img}
-					/>
+					<CardHeader title={name} />
+					<CardMedia className={classes.media} image={Img} />
 					<CardContent>
 						<Typography variant="body2" color="textSecondary" component="p">
 							Hola!
