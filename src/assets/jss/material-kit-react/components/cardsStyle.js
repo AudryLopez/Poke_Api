@@ -3,24 +3,26 @@ import "@fontsource/nunito-sans";
 
 
 
-const cardStyle = makeStyles((theme) => ({
+const cardStyle = makeStyles(() => ({
 	root: {
-		maxWidth: 275,
-		fontFamily: "Nunito Sans",
+		maxWidth: 240,
 	},
 	imgen: {
-		maxHeight: "24px",
+		maxHeight: "12px",
 	},
-	media: {
-		maxHeight: 30,
-		paddingTop: "100%", // 16:9
+	image: {
+		marginTop: "8px",
+		width: "100%",
+		maxHeight: "120px",
 	},
-	expand: {
-		transform: "rotate(0deg)",
-		marginLeft: "auto",
-		transition: theme.transitions.create("transform", {
-			duration: theme.transitions.duration.shortest,
-		}),
+	ShareIcon: {
+		height: 12,
+	},
+	"@global": {
+		".MuiTypography-root": {
+			color: "#495057",
+			fontFamily: "Nunito Sans",
+		},
 	},
 }));
 export default cardStyle;

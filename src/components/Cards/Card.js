@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "components/Cards/cards";
 
 function Cards() {
-	const url = "https://pokeapi.co/api/v2/pokemon/2/";
+	const url = "https://pokeapi.co/api/v2/pokemon/4/";
 	const [items, setItems] = useState([])
 	const [isLoaded, setIsLoaded] = useState(false);
 

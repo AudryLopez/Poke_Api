@@ -1,40 +1,64 @@
 import React from "react";
-import imgs from "../../assets/img/types/Planta_Pokemon.svg";
+//import imgs from "../../assets/img/types/Planta_Pokemon.svg";
 import {
-	Grid,
 	Card,
 	Typography,
-	CardHeader,
-	CardContent,
-	CardMedia,
+	CardActionArea,
 	CardActions,
-	IconButton,
+	CardContent,
+	Button 
 } from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
+//import ShareIcon from "@material-ui/icons/Share";
 import Style from "assets/jss/material-kit-react/components/cardsStyle";
 
 function cards(pokemon) {
 	const classes = Style();
 	const { name, Img } = pokemon;
 
+	const types = {
+		normal: "Normal_Pokemon",
+		fighting: "Pelea_Pokemon",
+		flying: "Volador_Pokemon",
+		poison: "Veneno_Pokemon",
+		ground: "Tierra_Pokemon",
+		rock: "Roca_Pokemon",
+		bug: "Bicho_Pokemon",
+		ghost: "Fantasma_Pokemon",
+		steel: "Acero_Pokemon",
+		fire: "Fuego_Pokemon",
+		water: "Agua_Pokemon",
+		grass: "planta_Pokemon",
+		electric: "Eléctrico_Pokemon",
+		psychic: "Psíquico_Pokemon",
+		ice: "Hielo_Pokemon",
+		dragon: "Dragón_Pokemon",
+		dark: "Normal_Pokemon",
+		fairy: "Normal_Pokemon",
+		unknown: "Normal_Pokemon",
+		shadow: "Normal_Pokemon",
+	};
+
+		console.log(types['poison'])
+
 		return (
-			<Grid item xs={4}>
-				<Card className={classes.root} variant="outlined">
-					<CardHeader title={name} />
-					<CardMedia className={classes.media} image={Img} />
+			<Card className={classes.root}>
+				<CardActionArea>
+					<img className={classes.image} src={Img}></img>
 					<CardContent>
-						<Typography variant="body2" color="textSecondary" component="p">
-							Hola!
+						<Typography gutterBottom variant="h5" component="h2">
+							{name}
 						</Typography>
 					</CardContent>
-					<CardActions disableSpacing>
-						<img className={classes.imgen} src={imgs} alt="Pokemon logo" />
-						<IconButton aria-label="share">
-							<ShareIcon />
-						</IconButton>
-					</CardActions>
-				</Card>
-			</Grid>
+				</CardActionArea>
+				<CardActions>
+					<Button size="small" color="primary">
+						Share
+					</Button>
+					<Button size="small" color="primary">
+						Learn More
+					</Button>
+				</CardActions>
+			</Card>
 		);
-    }
+}
 export default cards;
