@@ -16,7 +16,7 @@ import LoginPage from "views/LoginPage/LoginPage.js";
       <Route path="/login-page" component={LoginPage} />
       <Route path="/" component={Components} />
 */
-import Card from "components/Cards/Card";
+import Card from "components/pokemon/Pokemon";
 
 
 var hist = createBrowserHistory();

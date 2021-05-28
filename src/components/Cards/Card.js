@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Card from "components/Cards/cards";
+import { Grid } from "@material-ui/core";
 
-function Cards() {
-	const url = "https://pokeapi.co/api/v2/pokemon/4/";
+function Cards(url) {
 	const [items, setItems] = useState([])
 	const [isLoaded, setIsLoaded] = useState(false);
+	const  index  = url.url;
+	console.log(index)
 
-	const getdata = async url => {
-		const data = await fetch(url);
+	const getdata = async Url => {
+		const data = await fetch(Url);
 		return await data.json();
 	};
 
 	useEffect(async () => {
-		const response = await getdata(url);
+		const response = await getdata(index);
 
 		const pokemons = [response].map((result) => ({
 			Img: result.sprites.other.dream_world.front_default,
@@ -22,13 +24,16 @@ function Cards() {
 		setItems(pokemons);
 	}, []);
 
+
 	if (!isLoaded) {
 		return <div>Loading...</div>;
 	} else {
-		return (
-			items.map((pokemon, id)=>{
-				return(<Card key={id} name={pokemon.name} Img={pokemon.Img}/>)
-	}))
-}
+		return(items.map((pokemon, id) => {
+							return (
+								<Grid key={id} item xs={4}>
+									<Card key={id} name={pokemon.name} Img={pokemon.Img} />
+								</Grid>
+							);})
+		)}
 }
 export default Cards;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
 	Grid
 } from "@material-ui/core";
+import Cards from "components/Cards/Card"
 
 function Pokemon() {
 	const [error, setError] = useState(null);
@@ -30,10 +31,10 @@ function Pokemon() {
 	} else {
 		return (
 			<Grid item container justify="space-around">
-				<Grid item container xs={12} sm={8}>
+				<Grid item container xs={12} sm={6}>
 					<Grid container spacing={2}>
 						{items.map((pokemon, id)=>{
-							return (<h1 key={id}>{pokemon.name}</h1>) 
+							return(<Cards key={id} url={pokemon.url}/>)
 							})}
 					</Grid>
 				</Grid>

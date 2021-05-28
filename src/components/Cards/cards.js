@@ -1,5 +1,5 @@
 import React from "react";
-//import imgs from "../../assets/img/types/Planta_Pokemon.svg";
+import imgs from "../../assets/img/types/Fuego_Pokemon.svg";
 import {
 	Card,
 	Typography,
@@ -38,7 +38,7 @@ function cards(pokemon) {
 		shadow: "Normal_Pokemon",
 	};
 
-		console.log(types['poison'])
+	console.log(types["poison"]);
 
 		return (
 			<Card className={classes.root}>
@@ -51,9 +51,7 @@ function cards(pokemon) {
 					</CardContent>
 				</CardActionArea>
 				<CardActions>
-					<Button size="small" color="primary">
-						Share
-					</Button>
+					<img className={classes.imgType} src={imgs}></img>
 					<Button size="small" color="primary">
 						Learn More
 					</Button>
