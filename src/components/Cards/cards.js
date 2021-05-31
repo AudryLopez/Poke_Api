@@ -14,32 +14,7 @@ import Style from "assets/jss/material-kit-react/components/cardsStyle";
 function cards(pokemon) {
 	const classes = Style();
 	const { name, Img } = pokemon;
-
-	const types = {
-		normal: "Normal_Pokemon",
-		fighting: "Pelea_Pokemon",
-		flying: "Volador_Pokemon",
-		poison: "Veneno_Pokemon",
-		ground: "Tierra_Pokemon",
-		rock: "Roca_Pokemon",
-		bug: "Bicho_Pokemon",
-		ghost: "Fantasma_Pokemon",
-		steel: "Acero_Pokemon",
-		fire: "Fuego_Pokemon",
-		water: "Agua_Pokemon",
-		grass: "planta_Pokemon",
-		electric: "Eléctrico_Pokemon",
-		psychic: "Psíquico_Pokemon",
-		ice: "Hielo_Pokemon",
-		dragon: "Dragón_Pokemon",
-		dark: "Normal_Pokemon",
-		fairy: "Normal_Pokemon",
-		unknown: "Normal_Pokemon",
-		shadow: "Normal_Pokemon",
-	};
-
-	console.log(types["poison"]);
-
+	
 		return (
 			<Card className={classes.root}>
 				<CardActionArea>
