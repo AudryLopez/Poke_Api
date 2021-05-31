@@ -18,21 +18,29 @@ function Cards(url) {
 
 		const pokemons = [response].map((result) => ({
 			Img: result.sprites.other.dream_world.front_default,
-			name: result.name
+			name: result.name,
+			types: result.types,
 		}));
 		setIsLoaded(true);
 		setItems(pokemons);
 	}, []);
 
 
+
 	if (!isLoaded) {
 		return <div>Loading...</div>;
 	} else {
-		return(items.map((pokemon, id) => {
+		return(
+			items.map((pokemon, id) => {
 							return (
-								<Grid key={id} item xs={3}>
-									<Card key={id} name={pokemon.name} Img={pokemon.Img} />
-								</Grid>
+									<Grid key={id} item xs={3}>
+										<Card
+											key={id}
+											name={pokemon.name}
+											Img={pokemon.Img}
+											types={pokemon.types}
+										/>
+									</Grid>
 							);})
 		)}
 }

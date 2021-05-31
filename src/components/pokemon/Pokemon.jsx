@@ -18,7 +18,7 @@ function Pokemon() {
 	}
 
 	useEffect(() => {
-		getdata(`${REACT_APP_POKEAPI}?limit=16`).then((error) => {
+		getdata(`${REACT_APP_POKEAPI}?limit=807`).then((error) => {
 			setIsLoaded(true);
 			setError(error);
 		});

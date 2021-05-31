@@ -1,5 +1,4 @@
 import React from "react";
-import imgs from "../../assets/img/types/Fuego_Pokemon.svg";
 import {
 	Card,
 	Typography,
@@ -13,8 +12,9 @@ import Style from "assets/jss/material-kit-react/components/cardsStyle";
 
 function cards(pokemon) {
 	const classes = Style();
-	const { name, Img } = pokemon;
-	
+	const { name, Img, types } = pokemon;
+	console.log(pokemon);
+
 		return (
 			<Card className={classes.root}>
 				<CardActionArea>
@@ -26,7 +26,15 @@ function cards(pokemon) {
 					</CardContent>
 				</CardActionArea>
 				<CardActions>
-					<img className={classes.imgType} src={imgs}></img>
+					{types.map(({ type }, id) =>{
+						return (
+							<img
+								key={id}
+								className={classes.imgType}
+								src={require(`../../assets/img/types/${type.name}.svg`).default}
+								alt="tipo de pokemon"
+							/>
+						);})}
 					<Button size="small" color="primary">
 						Learn More
 					</Button>

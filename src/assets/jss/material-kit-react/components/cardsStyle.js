@@ -15,6 +15,7 @@ const cardStyle = makeStyles(() => ({
 		marginTop: "8px",
 		width: "100%",
 		maxHeight: "120px",
+		minHeight: "120px",
 	},
 	ShareIcon: {
 		height: 12,
