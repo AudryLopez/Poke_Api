@@ -33,14 +33,14 @@ function Cards(url) {
 		return(
 			items.map((pokemon, id) => {
 							return (
-									<Grid key={id} item xs={3}>
-										<Card
-											key={id}
-											name={pokemon.name}
-											Img={pokemon.Img}
-											types={pokemon.types}
-										/>
-									</Grid>
+								<Grid key={id} item xs={3}>
+									<Card
+										key={id}
+										name={pokemon.name}
+										Img={pokemon.Img}
+										types={pokemon.types}
+									/>
+								</Grid>
 							);})
 		)}
 }
