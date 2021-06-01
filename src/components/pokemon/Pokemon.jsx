@@ -32,7 +32,7 @@ function Pokemon() {
 		return (
 			<Grid item container justify="space-around">
 				<Grid item container xs={12} sm={8}>
-					<Grid container spacing={2}>
+					<Grid container spacing={3}>
 						{items.map((pokemon, id)=>{
 							return(<Cards key={id} url={pokemon.url}/>)
 							})}

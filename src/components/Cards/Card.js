@@ -33,7 +33,7 @@ function Cards(url) {
 		return(
 			items.map((pokemon, id) => {
 							return (
-								<Grid key={id} item xs={3}>
+								<Grid key={id} item xs={2} md={3}>
 									<Card
 										key={id}
 										name={pokemon.name}
