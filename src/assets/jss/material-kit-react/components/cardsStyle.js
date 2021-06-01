@@ -9,7 +9,7 @@ const cardStyle = makeStyles(() => ({
 		minWidth: 240,
 	},
 	imgType: {
-		maxHeight: "18px",
+		maxHeight: "24px",
 	},
 	image: {
 		marginTop: "8px",
