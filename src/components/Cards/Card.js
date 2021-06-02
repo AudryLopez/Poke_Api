@@ -36,10 +36,7 @@ function Cards(url) {
 								<Grid
 									key={id}
 									item
-									justify="center"
-									spacing={2}
 									sm={8}
-									xs={8}
 									md={4}>
 									<Card
 										key={id}
