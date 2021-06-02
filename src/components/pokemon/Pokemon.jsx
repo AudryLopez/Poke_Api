@@ -3,6 +3,7 @@ import {
 	Grid
 } from "@material-ui/core";
 import Cards from "components/Cards/Card"
+import Select from "components/Select/Select"
 
 function Pokemon() {
 	const [error, setError] = useState(null);
@@ -35,7 +36,8 @@ function Pokemon() {
 		return (
 			<Grid item spacing={4} container justify="space-around">
 				<Grid item container xs={7} sm={7}>
-					<Grid  container spacing={2}>
+					<Select />
+					<Grid container spacing={2}>
 						{items.map((pokemon, id) => {
 							return <Cards key={id} url={pokemon.url} />;
 						})}
