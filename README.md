@@ -6,7 +6,7 @@
 
 - Este proyecto fue generado con [React](https://github.com/facebook/react).
 - Como manejador de paquetes **npm**.
-- Para estilos **material-ui** y **css** 
+- Para estilos **material-ui** , **sass**  y **css** 
 
 # Variables de entorno
 
