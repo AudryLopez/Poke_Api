@@ -5,8 +5,10 @@ import "@fontsource/nunito-sans";
 
 const cardStyle = makeStyles(() => ({
 	root: {
-		width: 240,
-		maxHeight: 250,
+		maxWidth: 240,
+		"@media (max-width: 380px)": {
+			minWidth: 180,
+		},
 	},
 	imgType: {
 		maxHeight: "24px",
