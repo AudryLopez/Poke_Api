@@ -6,7 +6,9 @@ import "@fontsource/nunito-sans";
 const cardStyle = makeStyles(() => ({
 	root: {
 		maxWidth: 240,
-		minWidth: 240,
+		"@media (max-width: 380px)": {
+			minWidth: 180,
+		},
 	},
 	imgType: {
 		maxHeight: "18px",
@@ -15,7 +17,6 @@ const cardStyle = makeStyles(() => ({
 		marginTop: "8px",
 		width: "100%",
 		maxHeight: "120px",
-		minHeight: "120px",
 	},
 	ShareIcon: {
 		height: 12,

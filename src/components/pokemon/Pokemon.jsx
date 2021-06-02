@@ -17,10 +17,13 @@ function Pokemon() {
 		setIsLoaded(true);
 	}
 
-	useEffect(() => {
-		getdata(`${REACT_APP_POKEAPI}?limit=16`).then((error) => {
-			setIsLoaded(true);
-			setError(error);
+	console.log(REACT_APP_POKEAPI);
+
+	useEffect( () => {
+		getdata(`${REACT_APP_POKEAPI}?limit=151`)
+			.then((error) => {
+				setIsLoaded(true);
+				setError(error);
 		});
 	}, []);
 
@@ -30,8 +33,8 @@ function Pokemon() {
 		return <div>Loading...</div>;
 	} else {
 		return (
-			<Grid item container justify="space-around">
-				<Grid item container xs={12} sm={8}>
+			<Grid item  container justify="space-around">
+				<Grid item container xs={10} sm={8}>
 					<Grid container spacing={2}>
 						{items.map((pokemon, id)=>{
 							return(<Cards key={id} url={pokemon.url}/>)
