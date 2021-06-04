@@ -94,7 +94,7 @@ export default function DialogSelect() {
 					</FormControl>
 					<FormControl className={classes.margin}>
 						<InputLabel id="demo-customized-select-label">
-							generation
+							Generation
 						</InputLabel>
 						<Select
 							labelId="demo-customized-select-label"
