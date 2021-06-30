@@ -15,7 +15,6 @@ function Cards(url) {
 
 	useEffect(async () => {
 		const response = await getdata(index);
-
 		const pokemons = [response].map((result) => ({
 			Img: result.sprites.other.dream_world.front_default,
 			name: result.name,
