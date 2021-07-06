@@ -13,7 +13,6 @@ import Style from "assets/jss/material-kit-react/components/cardsStyle";
 function cards(pokemon) {
 	const classes = Style();
 	const { name, Img, types } = pokemon;
-	console.log(pokemon);
 
 		return (
 			<Card className={classes.root}>
