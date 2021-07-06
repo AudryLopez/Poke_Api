@@ -13,7 +13,7 @@ function Cards(url) {
 		return await data.json();
 	};
 
-	useEffect(async () => {
+	useEffect(async  => {
 		const response = await getdata(index);
 		const pokemons = [response].map((result) => ({
 			Img: result.sprites.other.dream_world.front_default,
