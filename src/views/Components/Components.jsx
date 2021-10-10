@@ -12,8 +12,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import Pokemon from "components/pokemon/Pokemon"
+import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import Pokemon from "components/pokemon/Pokemon";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
@@ -23,37 +23,37 @@ export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
-		<div>
-			<Header
-				brand="Material Kit React"
-				rightLinks={<HeaderLinks />}
-				fixed
-				color="transparent"
-				changeColorOnScroll={{
-					height: 400,
-					color: "white",
-				}}
-				{...rest}
-			/>
-			<Parallax image={require("assets/img/pokemon.jpg").default}>
-				<div className={classes.container}>
-					<GridContainer>
-						<GridItem>
-							<div className={classes.brand}>
-								<h1 className={classes.title}>Material Kit React.</h1>
-								<h3 className={classes.subtitle}>
-									A Badass Material-UI Kit based on Material Design.
-								</h3>
-							</div>
-						</GridItem>
-					</GridContainer>
-				</div>
-			</Parallax>
+    <div>
+      <Header
+        brand="Material Kit React"
+        rightLinks={<HeaderLinks />}
+        fixed
+        color="transparent"
+        changeColorOnScroll={{
+          height: 400,
+          color: "white",
+        }}
+        {...rest}
+      />
+      <Parallax image={require("assets/img/pokemon.jpg").default}>
+        <div className={classes.container}>
+          <GridContainer>
+            <GridItem>
+              <div className={classes.brand}>
+                <h1 className={classes.title}>Material Kit React.</h1>
+                <h3 className={classes.subtitle}>
+                  A Badass Material-UI Kit based on Material Design.
+                </h3>
+              </div>
+            </GridItem>
+          </GridContainer>
+        </div>
+      </Parallax>
 
-			<div className={classNames(classes.main, classes.mainRaised)}>
-				<Pokemon/>
-			</div>
-			<Footer />
-		</div>
-	);
+      <div className={classNames(classes.main, classes.mainRaised)}>
+        <Pokemon />
+      </div>
+      <Footer />
+    </div>
+  );
 }

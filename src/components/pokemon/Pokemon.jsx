@@ -1,49 +1,48 @@
 import React, { useEffect, useState } from "react";
-import {
-	Grid
-} from "@material-ui/core";
-import Cards from "components/Cards/Card"
-import Select from "components/Select/Select"
+import { Grid } from "@material-ui/core";
+import Cards from "components/Cards/Card";
+import Select from "components/Select/Select";
 
 function Pokemon() {
-	const [error, setError] = useState(null);
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [items, setItems] = useState([]);
-	const { REACT_APP_POKEAPI } = process.env
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  const { REACT_APP_POKEAPI } = process.env;
 
-	const getdata = async (url)=>{
-		const data = await fetch(url)
-		const response = await data.json()
-		setItems(response.results)
-		setIsLoaded(true);
-	}
+  const getdata = async (url) => {
+    const data = await fetch(url);
+    const response = await data.json();
+    setItems(response.results);
+    setIsLoaded(true);
+  };
 
-	useEffect( () => {
-		getdata(`${REACT_APP_POKEAPI}?limit=151`)
-			.then((error) => {
-				setIsLoaded(true);
-				setError(error);
-		});
-	}, []);
+  useEffect(() => {
+    getdata(`${REACT_APP_POKEAPI}?limit=151`).then((error) => {
+      setIsLoaded(true);
+      setError(error);
+    });
+  }, []);
 
-	if (error) {
-		return <div>Error: {error.message}</div>;
-	} else if (!isLoaded) {
-		return <div>Loading...</div>;
-	} else {
-		return (
-			<Grid item spacing={4} container justify="space-around">
-				<Grid item container xs={7} sm={7}>
-					<Select />
-					<Grid container spacing={2}>
-						{items.map((pokemon, id) => {
-							return <Cards key={id} url={pokemon.url} />;
-						})}
-					</Grid>
-				</Grid>
-			</Grid>
-		);
-	}
+  console.log(REACT_APP_POKEAPI)
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <Grid item spacing={4} container justify="space-around">
+        <Grid item container xs={7} sm={7}>
+          <Select />
+          <Grid container spacing={2}>
+            {items.map((pokemon, id) => {
+              return <Cards key={id} url={pokemon.url} />;
+            })}
+          </Grid>
+        </Grid>
+      </Grid>
+    );
+  }
 }
 
 export default Pokemon;
